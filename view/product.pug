@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Insert Product
+  body 
+    div 
+      if(dataDB == 0)
+        h1 Input Product
+        form(action="/product", method="post") 
+          input(type="text", name="product_name", placeholder="Product Name")
+          br
+          input(type="number", name="product_price", placeholder="Product Price")
+          br
+          input(type="submit", value="Save")
+      else 
+        h1 Edit Product
+        form(action="/update/" + dataDB[0].product_id, method="post") 
+            input(type="text", name="product_name", placeholder="Product Name" value=dataDB[0].product_name)
+            br
+            input(type="number", name="product_price", placeholder="Product Price" value=dataDB[0].product_price)
+            br
+            input(type="submit", value="Save")
